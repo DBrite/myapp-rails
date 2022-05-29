@@ -8,6 +8,7 @@ class IdeasController < ApplicationController
 
   # GET /ideas/1 or /ideas/1.json
   def show
+    @idea = Idea.find_by(id:params[:id].to_i)
   end
 
   # GET /ideas/new
@@ -60,7 +61,7 @@ class IdeasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_idea
-      @idea = Idea.find(params[:id])
+      @idea = Idea.find_by(id: params[:comment_id] || params[:id])
     end
 
     # Only allow a list of trusted parameters through.
